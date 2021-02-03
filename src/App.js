@@ -7,13 +7,14 @@ import {
 } from 'react-router-dom';
 
 import { SignUp } from './pages/SignUp';
-import { Navbar } from './components/Navbar';
+import { Navbar } from './components/NavBar/Navbar';
 import { Profile } from './pages/Profile';
+import { SignIn } from './pages/SignIn';
 
-const token = localStorage.getItem('token');
 
 function PrivateRoute(props) {
-  if(!token) return <Redirect to="/" />;
+  const token = localStorage.getItem('token');
+  if(!token) return <Redirect to="/sign-in" />;
 
   return <Route {...props} />;
 }
@@ -24,7 +25,8 @@ function App() {
       <Router>
         <Navbar/>
         <Switch>
-          <Route exact path="/" component={SignUp} />
+          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/sign-up" component={SignUp} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </Router>
