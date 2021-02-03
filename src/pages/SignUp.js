@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { FormSignUp } from '../components/SignUp/FormSignUp';
 
@@ -8,9 +9,24 @@ export function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if(validate()) {
+      try {
+        const token = await axios({
+          method: 'POST',
+          baseURL: process.env.REACT_SERVER_URL,
+          url: '/users',
+          data: { name, email, password }
+        });
+        // eslint-disable-next-line
+        console.log(token)
+        localStorage.setItem('token', token);
+      }
+      catch (err) {
+        localStorage.removeItem('token');
+        setErrors({ account: 'User invalid, does not create the account' });
+      }
       // eslint-disable-next-line
       console.log('yes');
     }
@@ -39,7 +55,7 @@ export function SignUp() {
     const arePasswordEqual = !!password && !!confirmPassword && password === confirmPassword;
 
     if (!arePasswordEqual) {
-      setErrors({password: 'La contraseña no coincide'});
+      setErrors({password: 'The password does not match'});
       return false;
     }
     return true;
