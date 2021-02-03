@@ -1,3 +1,9 @@
+import {
+  FormContainer,
+  InputForm,
+  ButtonSend,
+} from './SignUpStyles';
+
 export function FormSignUp({
   handleSubmit,
   name,
@@ -9,11 +15,11 @@ export function FormSignUp({
 }) {
   return (
     <>
-      <form className="Form__container" onSubmit={handleSubmit} >
+      <FormContainer className="Form__container" onSubmit={handleSubmit} >
         <label className="Form__label-name" htmlFor="name" >
           Name
         </label>
-        <input
+        <InputForm
           className="Form__input-name"
           id="name"
           type="text"
@@ -26,7 +32,7 @@ export function FormSignUp({
         <label className="Form__label-email" htmlFor="email" >
           Email
         </label>
-        <input
+        <InputForm
           className="Form__input-email"
           id="email"
           type="text"
@@ -39,7 +45,7 @@ export function FormSignUp({
         <label className="Form__label-password" htmlFor="password" >
           Password
         </label>
-        <input
+        <InputForm
           className="Form__input-password"
           id="password"
           type="text"
@@ -49,11 +55,11 @@ export function FormSignUp({
           placeholder="Password for the account"
           required
         />
-        <p>{errors}</p>
+        <span>{errors}</span>
         <label className="Form__label-confirmPassword" htmlFor="confirmPassword" >
           Confirm Password
         </label>
-        <input
+        <InputForm
           className="Form__input-confirmPassword"
           id="confirmPassword"
           type="text"
@@ -63,8 +69,8 @@ export function FormSignUp({
           placeholder="Confirm the password"
           required
         />
-        <button>Send Form</button>
-      </form>
+        <ButtonSend>Send Form</ButtonSend>
+      </FormContainer>
     </>
   );
 }
