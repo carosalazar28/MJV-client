@@ -24,7 +24,7 @@ export  function SignIn() {
     }
     catch (err) {
       localStorage.removeItem('token');
-      setErrors({ account: 'User invalid, does not create the account' });
+      setErrors({ account: 'User invalid or password invalid' });
     }
   };
 
@@ -47,8 +47,7 @@ export  function SignIn() {
       email={email}
       password={password}
       handleChange={handleChange}
-      errorsPassword={errors.password}
       errorsAccount={errors.account}
     />
-  )
+  );
 }
