@@ -42,3 +42,8 @@ export const ButtonSend = styled.button`
     transition: all .1s ease-in-out;
   };
 `;
+
+export const Errors = styled.span`
+  font-size: 14px;
+  color: red;
+`;

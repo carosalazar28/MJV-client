@@ -2,6 +2,7 @@ import {
   FormContainer,
   InputForm,
   ButtonSend,
+  Errors,
 } from './SignUpStyles';
 
 export function FormSignUp({
@@ -11,11 +12,13 @@ export function FormSignUp({
   password,
   confirmPassword,
   handleChange,
-  errors
+  errorsPassword,
+  errorsAccount,
 }) {
   return (
     <>
       <FormContainer className="Form__container" onSubmit={handleSubmit} >
+        <Errors>{errorsAccount}</Errors>
         <label className="Form__label-name" htmlFor="name" >
           Name
         </label>
@@ -48,21 +51,21 @@ export function FormSignUp({
         <InputForm
           className="Form__input-password"
           id="password"
-          type="text"
+          type="password"
           name="password"
           value={password}
           onChange={handleChange}
           placeholder="Password for the account"
           required
         />
-        <span>{errors}</span>
+        <Errors>{errorsPassword}</Errors>
         <label className="Form__label-confirmPassword" htmlFor="confirmPassword" >
           Confirm Password
         </label>
         <InputForm
           className="Form__input-confirmPassword"
           id="confirmPassword"
-          type="text"
+          type="password"
           name="confirmPassword"
           value={confirmPassword}
           onChange={handleChange}

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormSignUp } from '../components/SignUp/FormSignUp';
 
 export function SignUp() {
@@ -9,26 +10,25 @@ export function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
 
+  const history = useHistory();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(validate()) {
       try {
-        const token = await axios({
+        const { data: { token }} = await axios({
           method: 'POST',
-          baseURL: process.env.REACT_SERVER_URL,
-          url: '/users',
+          baseURL: 'http://localhost:8080',
+          url: '/users/sign-up',
           data: { name, email, password }
         });
-        // eslint-disable-next-line
-        console.log(token)
         localStorage.setItem('token', token);
+        history.push('/profile');
       }
       catch (err) {
         localStorage.removeItem('token');
         setErrors({ account: 'User invalid, does not create the account' });
       }
-      // eslint-disable-next-line
-      console.log('yes');
     }
   };
 
@@ -53,9 +53,15 @@ export function SignUp() {
 
   const validate = () => {
     const arePasswordEqual = !!password && !!confirmPassword && password === confirmPassword;
+    const securePassword = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(password);
 
     if (!arePasswordEqual) {
       setErrors({password: 'The password does not match'});
+      return false;
+    }
+
+    if(!securePassword) {
+      setErrors({password: 'The password must be at least 8-16 characters long, at least one digit, at least one lowercase, and at least one uppercase. It may NOT have other symbols'});
       return false;
     }
     return true;
@@ -71,7 +77,8 @@ export function SignUp() {
         confirmPassword={confirmPassword}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        errors={errors.password}
+        errorsPassword={errors.password}
+        errorsAccount={errors.account}
       />
     </div>
   );
