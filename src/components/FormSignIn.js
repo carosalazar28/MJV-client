@@ -4,13 +4,13 @@ import {
   ButtonSend,
   Errors,
 } from './SignUp/SignUpStyles';
+import { Link } from 'react-router-dom';
 
 export function FormSignIn({
   handleSubmit,
   email,
   password,
   handleChange,
-  errorsPassword,
   errorsAccount,
 }) {
   return (
@@ -43,7 +43,8 @@ export function FormSignIn({
           placeholder="Password for the account"
           required
         />
-        <Errors>{errorsPassword}</Errors>
+        <p>Or</p>
+        <Link to="/sign-up" className="Link__signup">Create Account</Link>
         <ButtonSend>Send Form</ButtonSend>
       </FormContainer>
     </>
