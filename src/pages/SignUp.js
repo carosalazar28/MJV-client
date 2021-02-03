@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormSignUp } from '../components/FormSignUp';
+import { FormSignUp } from '../components/SignUp/FormSignUp';
 
 export function SignUp() {
   const [name, setName] = useState('');
