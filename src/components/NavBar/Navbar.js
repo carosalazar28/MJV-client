@@ -1,5 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../store/AuthContext';
 import {
   HeaderContainer,
   LinkProducts,
@@ -11,23 +12,12 @@ import {
 export function Navbar() {
   const history = useHistory();
 
-  const [token, setToken] = useState(null);
-
-  const getToken = () => {
-    setToken(localStorage.getItem('token'));
-    if(token) {
-      return true;
-    }
-    return false;
-  };
-
-  useEffect(() => {
-    getToken();
-  }, [token]);
+  const { auth, isAuth } = useContext(AuthContext);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    history.push('/sign-in');
+    isAuth(null);
+    history.push('/');
   };
 
   return (
@@ -43,20 +33,20 @@ export function Navbar() {
         </LinkProducts>
       </div>
       <div className="Header__nav">
-        <ContainerItems className="Header__nav-items">
-          { token && (
+        { auth && (
+          <ContainerItems className="Header__nav-items">
             <li className="Header__nav-item">
               <Link to="/profile" className="Header__nav-profile">
                 Profile
               </Link>
             </li>
-          )}
-          <li className="Header__nav-item">
-            <ButtonLogout onClick={handleLogout} className="Header__nav-logout">
-              Logout
-            </ButtonLogout>
-          </li>
-        </ContainerItems>
+            <li className="Header__nav-item">
+              <ButtonLogout onClick={handleLogout} className="Header__nav-logout">
+                Logout
+              </ButtonLogout>
+            </li>
+          </ContainerItems>
+        )}
       </div>
     </HeaderContainer>
   );
