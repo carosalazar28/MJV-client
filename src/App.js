@@ -10,7 +10,7 @@ import { SignUp } from './pages/SignUp';
 import { Navbar } from './components/NavBar/Navbar';
 import { Profile } from './pages/Profile';
 import { SignIn } from './pages/SignIn';
-import { Products } from './pages/Products';
+import Products from './pages/Products';
 
 
 function PrivateRoute(props) {
@@ -28,7 +28,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={SignIn} />
           <Route exact path="/sign-up" component={SignUp} />
-          <Route exact path="/products" components={Products} />
+          <Route exact path="/products" component={Products} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </Router>
