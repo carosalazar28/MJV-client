@@ -43,9 +43,24 @@ export const ButtonSend = styled.button`
   };
 `;
 
+export const ButtonDelete = styled(ButtonSend)`
+  margin-left: 20px;
+  border: 1px solid red;
+  &:hover {
+    border-color: rgb(221 15 23 / 50%);
+  }
+  &:focus {
+    border-color: rgb(221 15 23 / 50%);
+  };
+`;
+
 export const Errors = styled.span`
   font-size: 14px;
   color: red;
+`;
+
+export const Message = styled(Errors)`
+  color: green;
 `;
 
 export const InputSelect = styled.select`

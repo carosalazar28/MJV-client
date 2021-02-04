@@ -1,5 +1,6 @@
 import { FormProfile } from '../components/FormProfile';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 export function Profile() {
@@ -11,22 +12,52 @@ export function Profile() {
   const [rolDeveloper, setRolDeveloper] = useState('');
   const [errors, setErrors] = useState({});
 
+  const history = useHistory();
+
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const url = process.env.REACT_APP_SERVER_URL;
-    console.log(url);
     axios({
       method:'GET',
-      baseURL: url,
+      baseURL: process.env.REACT_APP_SERVER_URL,
       url: '/users/',
       headers: {
         Authorization: `Bearer ${token}`
       },
-    }).then(({ data : { data } }) => console.log('here in get', data));
+    }).then(({ data : { data } }) => {
+      setName(data.name);
+      setEmail(data.email);
+      setLastname(data.lastname);
+      setJob(data.job);
+      setRolDeveloper(data.rolDeveloper);
+    })
+      .catch(err => {
+        setErrors({ account: err });
+      });
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const token = localStorage.getItem('token');
+      await axios({
+        method: 'PUT',
+        baseURL: process.env.REACT_APP_SERVER_URL,
+        url: '/users/',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        data: {
+          name,
+          email,
+          lastname,
+          job,
+          rolDeveloper,
+        },
+      });
+      setErrors({ message: 'Your account has been updated '});
+    } catch (err) {
+      setErrors({ account: 'Error we can not update the account' });
+    }
   };
 
   const handleChange = (e) => {
@@ -51,6 +82,21 @@ export function Profile() {
     }
   };
 
+  const handleDelete = async () => {
+    const token = localStorage.getItem('token');
+    axios({
+      method:'DELETE',
+      baseURL: process.env.REACT_APP_SERVER_URL,
+      url: '/users/',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }).then(history.push('/'))
+      .catch(err => {
+        setErrors({ account: err });
+      });
+  };
+
   return (
     <div>
       <h1>Profile</h1>
@@ -62,7 +108,9 @@ export function Profile() {
         job={job}
         rolDeveloper={rolDeveloper}
         handleChange={handleChange}
+        handleDelete={handleDelete}
         errorsAccount={errors.account}
+        errorsMessage={errors.message}
       />
     </div>
   );

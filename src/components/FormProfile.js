@@ -5,6 +5,8 @@ import {
   Errors,
   InputSelect,
   InputChecked,
+  ButtonDelete,
+  Message,
 } from './styled/FormStyles';
 
 export function FormProfile({
@@ -15,12 +17,15 @@ export function FormProfile({
   job,
   rolDeveloper,
   handleChange,
+  handleDelete,
   errorsAccount,
+  errorsMessage,
 }) {
   return (
     <>
       <FormContainer className="Form__container" onSubmit={handleSubmit} >
         <Errors>{errorsAccount}</Errors>
+        <Message>{errorsMessage}</Message>
         <label className="Form__label-name" htmlFor="name" >
           Name
         </label>
@@ -71,6 +76,12 @@ export function FormProfile({
           placeholder="What is your rol"
         >
           <option
+            value="NN"
+            className="Form__input-nn"
+          >
+            None
+          </option>
+          <option
             value="FE"
             className="Form__input-fe"
           >
@@ -98,9 +109,15 @@ export function FormProfile({
           type="checkbox"
           name="job"
           value={job}
+          checked={job}
           onChange={handleChange}
         />
-        <ButtonSend>Send Form</ButtonSend>
+        <div>
+          <ButtonSend>Send Form</ButtonSend>
+          <ButtonDelete onClick={handleDelete}>
+            Delete Account
+          </ButtonDelete>
+        </div>
       </FormContainer>
     </>
   );

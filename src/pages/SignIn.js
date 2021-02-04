@@ -18,7 +18,7 @@ export  function SignIn() {
     try {
       const { data: { token }} = await axios({
         method: 'POST',
-        baseURL: 'http://localhost:8080',
+        baseURL: process.env.REACT_APP_SERVER_URL,
         url: '/users/sign-in',
         data: { email, password }
       });
