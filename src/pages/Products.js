@@ -1,5 +1,10 @@
+import { Product } from '../components/Products/Product';
+
 export function Products() {
   return (
-    <h1>List of Products</h1>
+    <div>
+      <h1>List of Products</h1>
+      <Product/>
+    </div>
   );
 }
