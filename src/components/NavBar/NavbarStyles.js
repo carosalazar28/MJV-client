@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 30px;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
   position: sticky;
 `;
 
-export const LinkProducts = styled(Link)`
+export const LinkProducts = styled.div`
   display: flex;
   align-items: center;
 `;
