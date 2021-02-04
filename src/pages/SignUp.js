@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormSignUp } from '../components/SignUp/FormSignUp';
+import { AuthContext } from '../store/AuthContext';
 
 export function SignUp() {
   const [name, setName] = useState('');
@@ -9,6 +10,8 @@ export function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
+
+  const { isAuth } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -23,6 +26,7 @@ export function SignUp() {
           data: { name, email, password }
         });
         localStorage.setItem('token', token);
+        isAuth(token);
         history.push('/profile');
       }
       catch (err) {
