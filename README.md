@@ -30,7 +30,7 @@ yarn start
 - Form with secure validation of the password in the front end.
 
 ### Login
-- Form with Axios petition to a server to '/users'
+- Form with Axios petition and verificated the user
 
 ### User Page
 - Form with new inputs for updated the user model and also can delete the account
