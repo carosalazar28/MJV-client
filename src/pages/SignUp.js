@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FormSignUp } from '../components/SignUp/FormSignUp';
+import { FormSignUp } from '../components/FormSignUp';
 import { AuthContext } from '../store/AuthContext';
 
 export function SignUp() {

@@ -3,7 +3,7 @@ import {
   InputForm,
   ButtonSend,
   Errors,
-} from './SignUp/SignUpStyles';
+} from './styled/FormStyles';
 import { Link } from 'react-router-dom';
 
 export function FormSignIn({
