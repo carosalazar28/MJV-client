@@ -25,12 +25,24 @@ yarn start
 ```
 
 ## Features developed
-- User Registration
-- Login
-- User Page
-- List of Products
-- Product Search
-- Linter to normalize the project with esLint, Prettier, and EditorConfig
+
+### User Registration
+- Form with secure validation of the password in the front end.
+
+### Login
+- Form with Axios petition to a server to '/users'
+
+### User Page
+- Form with new inputs for updated the user model and also can delete the account
+
+### List of Products
+- Axios petition to jsonplaceholder for render random data like a products data
+
+### Product Search
+- Search input by product title
+
+### Linter to normalize the project with esLint, Prettier, and EditorConfig
+- Files with config
 
 ## Environmental Variables
 
@@ -49,7 +61,6 @@ Axios - Library to manage asynchronous programming with promises
 
 ## Author ✒️
 Carolina Salazar - FrontEnd Developer - [carosalazar28](https://github.com/carosalazar28)
-
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
