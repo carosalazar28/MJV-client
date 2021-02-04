@@ -14,7 +14,7 @@ import { SignIn } from './pages/SignIn';
 
 function PrivateRoute(props) {
   const token = localStorage.getItem('token');
-  if(!token) return <Redirect to="/sign-in" />;
+  if(!token) return <Redirect to="/" />;
 
   return <Route {...props} />;
 }
@@ -25,7 +25,7 @@ function App() {
       <Router>
         <Navbar/>
         <Switch>
-          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/" component={SignIn} />
           <Route exact path="/sign-up" component={SignUp} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
