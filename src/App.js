@@ -28,8 +28,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={SignIn} />
           <Route exact path="/sign-up" component={SignUp} />
-          <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/products" components={Products} />
+          <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </Router>
     </div>
