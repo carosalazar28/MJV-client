@@ -47,3 +47,22 @@ export const Errors = styled.span`
   font-size: 14px;
   color: red;
 `;
+
+export const InputSelect = styled.select`
+  width: 250px;
+  margin: 10px auto;
+  border: 1px solid #0f31dd;
+  border-radius: 5px;
+  padding: 6px 15px;
+  &:focus {
+    border-color: rgba(15, 49, 221, 0.5);
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.0125), 0 0 8px rgba(34,139,230,0.5);
+    transition: all .1s ease-in-out;
+  };
+`;
+
+export const InputChecked = styled(InputForm)`
+  width: inherit;
+  height: inherit;
+`;

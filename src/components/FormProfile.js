@@ -3,6 +3,8 @@ import {
   InputForm,
   ButtonSend,
   Errors,
+  InputSelect,
+  InputChecked,
 } from './styled/FormStyles';
 
 export function FormProfile({
@@ -60,7 +62,7 @@ export function FormProfile({
         <label className="Form__label-rolDeveloper" htmlFor="rolDeveloper" >
           Rol Developer
         </label>
-        <select
+        <InputSelect
           className="Form__input-rolDeveloper"
           id="rolDeveloper"
           name="rolDeveloper"
@@ -86,11 +88,11 @@ export function FormProfile({
           >
             Full Stack
           </option>
-        </select>
+        </InputSelect>
         <label className="Form__label-job" htmlFor="job" >
           You have Job
         </label>
-        <InputForm
+        <InputChecked
           className="Form__input-job"
           id="job"
           type="checkbox"

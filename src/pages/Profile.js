@@ -1,5 +1,6 @@
 import { FormProfile } from '../components/FormProfile';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export function Profile() {
 
@@ -9,6 +10,20 @@ export function Profile() {
   const [job, setJob] = useState(true);
   const [rolDeveloper, setRolDeveloper] = useState('');
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const url = process.env.REACT_APP_SERVER_URL;
+    console.log(url);
+    axios({
+      method:'GET',
+      baseURL: url,
+      url: '/users/',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }).then(({ data : { data } }) => console.log('here in get', data));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
