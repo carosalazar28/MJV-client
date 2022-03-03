@@ -26,14 +26,16 @@ export function Navbar() {
         <LinkProducts className="Header__logo-path">
           <ImageLogo
             className="Header__logo-image"
-            alt="Logo from MJV"
-            src="https://www.mjvinnovation.com/wp-content/themes/mjv/img/mjv.png"
+            alt="Logo"
+            src="https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/spaces%2F-LAPclUsEGF8MxYGQwcr%2Favatar.png?generation=1524086548057075&alt=media"
           />
-          <Link to="/products" className="Header__link-products">Products</Link>
+          <Link to="/products" className="Header__link-products">
+            Products
+          </Link>
         </LinkProducts>
       </div>
       <div className="Header__nav">
-        { auth ? (
+        {auth ? (
           <ContainerItems className="Header__nav-items">
             <li className="Header__nav-item">
               <Link to="/profile" className="Header__nav-profile">
@@ -41,7 +43,10 @@ export function Navbar() {
               </Link>
             </li>
             <li className="Header__nav-item">
-              <ButtonLogout onClick={handleLogout} className="Header__nav-logout">
+              <ButtonLogout
+                onClick={handleLogout}
+                className="Header__nav-logout"
+              >
                 Logout
               </ButtonLogout>
             </li>

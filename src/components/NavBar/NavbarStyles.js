@@ -16,7 +16,7 @@ export const LinkProducts = styled.div`
 
 export const ImageLogo = styled.img`
   width: 50px;
-  height: 25px;
+  border-radius: 50%;
   margin-right: 10px;
 `;
 
@@ -40,9 +40,8 @@ export const ButtonLogout = styled.button`
   &:focus {
     border-color: rgba(15, 49, 221, 0.5);
     outline: none;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.0125), 0 0 8px rgba(34,139,230,0.5);
-    transition: all .1s ease-in-out;
-  };
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.0125),
+      0 0 8px rgba(34, 139, 230, 0.5);
+    transition: all 0.1s ease-in-out;
+  }
 `;
-
-

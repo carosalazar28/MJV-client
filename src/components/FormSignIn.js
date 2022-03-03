@@ -15,12 +15,13 @@ export function FormSignIn({
 }) {
   return (
     <>
-      <FormContainer className="Form__container" onSubmit={handleSubmit} >
+      <FormContainer className="Form__container" onSubmit={handleSubmit}>
         <Errors>{errorsAccount}</Errors>
-        <label className="Form__label-email" htmlFor="email" >
+        <label className="Form__label-email" htmlFor="email">
           Email
         </label>
         <InputForm
+          data-cy="email"
           className="Form__input-email"
           id="email"
           type="text"
@@ -30,7 +31,7 @@ export function FormSignIn({
           placeholder="Email new user"
           required
         />
-        <label className="Form__label-password" htmlFor="password" >
+        <label className="Form__label-password" htmlFor="password">
           Password
         </label>
         <InputForm
@@ -45,7 +46,9 @@ export function FormSignIn({
         />
         <ButtonSend>Send Form</ButtonSend>
         <p>Or</p>
-        <Link to="/sign-up" className="Link__signup">Create Account</Link>
+        <Link to="/sign-up" className="Link__signup">
+          Create Account
+        </Link>
       </FormContainer>
     </>
   );
