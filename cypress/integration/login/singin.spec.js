@@ -10,9 +10,11 @@ describe('Login Test', () => {
   });
 
   it('Should be sign in into app', () => {
+    const api = 'mjv-db.herokuapp.com';
+
     cy.get('[data-cy=email]').type(user.email);
     cy.get('#password').type(user.password);
-    cy.intercept('GET', 'api/users/').as('getProfile');
+    cy.intercept('GET', `${api}/users/`).as('getProfile');
     cy.get('[data-cy=submit]').click();
 
     cy.wait('@getProfile');

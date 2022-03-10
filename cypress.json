@@ -1,4 +1,3 @@
 {
-  "baseUrl": "http://localhost:3000",
-  "api": "mjv-db.herokuapp.com"
+  "baseUrl": "http://localhost:3000"
 }
