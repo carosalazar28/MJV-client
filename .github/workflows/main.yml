@@ -15,6 +15,7 @@ jobs:
         with:
           start: npm start
           browser: chrome
+          env: REACT_APP_API_URL=${{ secrets.API_URL }}
       - name: Cypress debug logs 📝
         uses: ./
         env:
