@@ -14,3 +14,8 @@ jobs:
         uses: cypress-io/github-action@v2.9.7
         with:
           start: npm start
+          browser: chrome
+      - name: Cypress debug logs 📝
+        uses: ./
+        env:
+          DEBUG: '@cypress/github-action'
