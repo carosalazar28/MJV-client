@@ -17,8 +17,10 @@ jobs:
         with:
           start: npm start
           browser: chrome
-          env: REACT_APP_SERVER_URL=${{ secrets.API_URL }}, CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}, GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          env: REACT_APP_SERVER_URL=${{ secrets.API_URL }}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: cypress:*
       - name: Cypress debug logs 📝
         uses: ./
-        env:
-          DEBUG: '@cypress/github-action'
