@@ -23,3 +23,6 @@ jobs:
           DEBUG: cypress:*
       - name: Cypress debug logs 📝
         uses: ./
+env:
+  #to start app
+  REACT_APP_API_URL: ${{ secrets.API_URL }}
