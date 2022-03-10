@@ -17,7 +17,6 @@ jobs:
           runTests: false
       - name: Prepare UI step
         run: |
-          cd packages/test-app
           yarn build
       - name: run tests
         uses: cypress-io/github-action@v2
