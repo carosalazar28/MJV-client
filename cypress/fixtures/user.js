@@ -1,5 +1,5 @@
 const user = {
-  email: 'faker@email.com',
+  email: 'test1@test.com',
   password: '12345678',
 };
 
