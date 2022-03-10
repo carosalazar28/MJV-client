@@ -18,11 +18,11 @@ jobs:
       - name: Prepare UI step
         run: |
           yarn build
-      - name: run tests
+      - name: run cypress
         uses: cypress-io/github-action@v2
         env:
           CI: true
         with:
           install: false
-          start: yarn start-server
+          start: yarn start
           working-directory: cypress/integration
