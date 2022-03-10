@@ -1,17 +1,29 @@
-name: Cypress Tests
-
-on: [push]
-
+name: PR Checker
+on:
+  pull_request:
+  push:
 jobs:
-  cypress-run:
+  cypress-pr-checker:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+      - uses: actions/checkout@v2
+      - name: Get yarn cache
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Install dependencies
         uses: cypress-io/github-action@v2
         with:
-          build: npm run build
-          start: npm start
+          runTests: false
+      - name: Prepare UI step
+        run: |
+          cd packages/test-app
+          yarn build
+      - name: run tests
+        uses: cypress-io/github-action@v2
+        env:
+          CI: true
+        with:
+          install: false
+          start: yarn start-server
+          working-directory: cypress/integration
