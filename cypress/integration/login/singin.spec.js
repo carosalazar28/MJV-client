@@ -12,7 +12,7 @@ describe('Login Test', () => {
   it('Should be sign in into app', () => {
     cy.get('[data-cy=email]').type(user.email);
     cy.get('#password').type(user.password);
-    cy.intercept('GET', `${Cypress.env('REACT_APP_API_URL')}/users/`).as(
+    cy.intercept('GET', `${Cypress.env('REACT_APP_SERVER_URL')}/users/`).as(
       'getProfile'
     );
     cy.get('[data-cy=submit]').click();

@@ -1,3 +1,6 @@
 {
-  "baseUrl": "http://localhost:3000"
+  "baseUrl": "http://localhost:3000",
+  "env": {
+    "REACT_APP_SERVER_URL": "https://mjv-db.herokuapp.com"
+  }
 }
