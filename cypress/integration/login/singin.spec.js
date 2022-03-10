@@ -2,7 +2,7 @@ import user from '../../fixtures/user';
 
 describe('Login Test', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('/');
   });
 
   it('Does not do much', () => {
