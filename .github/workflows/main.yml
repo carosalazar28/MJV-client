@@ -25,4 +25,4 @@ jobs:
         uses: ./
 env:
   #to start app
-  REACT_APP_API_URL: ${{ secrets.API_URL }}
+  REACT_APP_SERVER_URL: ${{ secrets.API_URL }}
