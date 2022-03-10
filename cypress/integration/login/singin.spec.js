@@ -10,7 +10,7 @@ describe('Login Test', () => {
   });
 
   it('Should be sign in into app', () => {
-    const api = 'mjv-db.herokuapp.com';
+    const api = 'https://mjv-db.herokuapp.com/';
 
     cy.get('[data-cy=email]').type(user.email);
     cy.get('#password').type(user.password);
