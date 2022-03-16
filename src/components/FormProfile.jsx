@@ -16,6 +16,7 @@ export function FormProfile({
   lastname,
   job,
   rolDeveloper,
+  birthdayDate,
   handleChange,
   handleDelete,
   errorsAccount,
@@ -23,10 +24,10 @@ export function FormProfile({
 }) {
   return (
     <>
-      <FormContainer className="Form__container" onSubmit={handleSubmit} >
+      <FormContainer className="Form__container" onSubmit={handleSubmit}>
         <Errors>{errorsAccount}</Errors>
         <Message>{errorsMessage}</Message>
-        <label className="Form__label-name" htmlFor="name" >
+        <label className="Form__label-name" htmlFor="name">
           Name
         </label>
         <InputForm
@@ -39,7 +40,7 @@ export function FormProfile({
           placeholder="Name new user"
           required
         />
-        <label className="Form__label-email" htmlFor="email" >
+        <label className="Form__label-email" htmlFor="email">
           Email
         </label>
         <InputForm
@@ -52,7 +53,7 @@ export function FormProfile({
           placeholder="Email new user"
           required
         />
-        <label className="Form__label-lastname" htmlFor="lastname" >
+        <label className="Form__label-lastname" htmlFor="lastname">
           Lastname
         </label>
         <InputForm
@@ -64,7 +65,19 @@ export function FormProfile({
           onChange={handleChange}
           placeholder="Lastname for the account"
         />
-        <label className="Form__label-rolDeveloper" htmlFor="rolDeveloper" >
+        <label className="Form__label-birthdayDate" htmlFor="lastname">
+          Birthday
+        </label>
+        <InputForm
+          className="Form_input-birthdayDate"
+          id="birthdayDate"
+          name="birthdayDate"
+          value={birthdayDate}
+          onChange={handleChange}
+          placeholder="What is your bithday date"
+          type="date"
+        />
+        <label className="Form__label-rolDeveloper" htmlFor="rolDeveloper">
           Rol Developer
         </label>
         <InputSelect
@@ -75,32 +88,20 @@ export function FormProfile({
           onChange={handleChange}
           placeholder="What is your rol"
         >
-          <option
-            value="NN"
-            className="Form__input-nn"
-          >
+          <option value="NN" className="Form__input-nn">
             None
           </option>
-          <option
-            value="FE"
-            className="Form__input-fe"
-          >
+          <option value="FE" className="Form__input-fe">
             Front End
           </option>
-          <option
-            value="BE"
-            className="Form__input-be"
-          >
+          <option value="BE" className="Form__input-be">
             Back End
           </option>
-          <option
-            value="FS"
-            className="Form__input-fs"
-          >
+          <option value="FS" className="Form__input-fs">
             Full Stack
           </option>
         </InputSelect>
-        <label className="Form__label-job" htmlFor="job" >
+        <label className="Form__label-job" htmlFor="job">
           You have Job
         </label>
         <InputChecked
@@ -114,9 +115,7 @@ export function FormProfile({
         />
         <div>
           <ButtonSend>Send Form</ButtonSend>
-          <ButtonDelete onClick={handleDelete}>
-            Delete Account
-          </ButtonDelete>
+          <ButtonDelete onClick={handleDelete}>Delete Account</ButtonDelete>
         </div>
       </FormContainer>
     </>
