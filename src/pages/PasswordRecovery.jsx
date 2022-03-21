@@ -6,8 +6,7 @@ import PasswordRecoveryForm from '../components/PasswordRecovery';
 
 function PasswordRecovery() {
   const [email, setEmail] = useState('');
-  const [errorsRecovery, setErrorsRecovery] = useState(null);
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -20,17 +19,16 @@ function PasswordRecovery() {
       await axios({
         method: 'POST',
         baseURL: process.env.REACT_APP_SERVER_URL,
-        url: '/email/recovery-pass',
+        url: '/users/password-recovery',
         data: { email },
       });
       enqueueSnackbar(
         'Te hemos enviado un correo de recuperacion de contraseña, por favor revisa tu correo',
         {
-          variant: 'success',
+          variant: 'info',
         }
       );
     } catch (error) {
-      setErrorsRecovery(error);
       enqueueSnackbar('El email no existe', {
         variant: 'error',
       });
@@ -39,7 +37,6 @@ function PasswordRecovery() {
 
   return (
     <PasswordRecoveryForm
-      errorsRecovery={errorsRecovery}
       email={email}
       handleChange={handleChange}
       handleSubmit={handleSubmit}

@@ -1,20 +1,9 @@
-import {
-  FormContainer,
-  InputForm,
-  ButtonSend,
-  Errors,
-} from './styled/FormStyles';
+import { FormContainer, InputForm, ButtonSend } from './styled/FormStyles';
 
-function PasswordRecoveryForm({
-  errorsRecovery,
-  email,
-  handleSubmit,
-  handleChange,
-}) {
+function PasswordRecoveryForm({ email, handleSubmit, handleChange }) {
   return (
     <div>
       <FormContainer onSubmit={handleSubmit} id="recoveryPass">
-        <Errors>{errorsRecovery}</Errors>
         <label htmlFor="email">Ingresa tu correo electronico</label>
         <InputForm
           id="email"

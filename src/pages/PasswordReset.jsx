@@ -12,7 +12,7 @@ function PasswordRecoveryReset() {
   const [password, setPassword] = useState('');
   const [newPassword, setPasswordConfirm] = useState('');
   const [message, setMessage] = useState('');
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +35,7 @@ function PasswordRecoveryReset() {
         await axios({
           method: 'PUT',
           baseURL: process.env.REACT_APP_SERVER_URL,
-          url: '/email/recovery-reset',
+          url: '/users/password-reset',
           data: { newPassword },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ function PasswordRecoveryReset() {
         enqueueSnackbar('Contraseña reestablecida correcamente!', {
           variant: 'success',
         });
-        history.push('/sign-in');
+        history.push('/');
       } catch (error) {
         setMessage(error);
         enqueueSnackbar('No se logro reestablecer la constraseña', {
