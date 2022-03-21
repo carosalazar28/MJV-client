@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const FormContainer = styled.form`
   display: flex;
@@ -17,9 +18,10 @@ export const InputForm = styled.input`
   &:focus {
     border-color: rgba(15, 49, 221, 0.5);
     outline: none;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.0125), 0 0 8px rgba(34,139,230,0.5);
-    transition: all .1s ease-in-out;
-  };
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.0125),
+      0 0 8px rgba(34, 139, 230, 0.5);
+    transition: all 0.1s ease-in-out;
+  }
 `;
 
 export const ButtonSend = styled.button`
@@ -38,9 +40,10 @@ export const ButtonSend = styled.button`
   &:focus {
     border-color: rgba(15, 49, 221, 0.5);
     outline: none;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.0125), 0 0 8px rgba(34,139,230,0.5);
-    transition: all .1s ease-in-out;
-  };
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.0125),
+      0 0 8px rgba(34, 139, 230, 0.5);
+    transition: all 0.1s ease-in-out;
+  }
 `;
 
 export const ButtonDelete = styled(ButtonSend)`
@@ -51,7 +54,7 @@ export const ButtonDelete = styled(ButtonSend)`
   }
   &:focus {
     border-color: rgb(221 15 23 / 50%);
-  };
+  }
 `;
 
 export const Errors = styled.span`
@@ -72,12 +75,21 @@ export const InputSelect = styled.select`
   &:focus {
     border-color: rgba(15, 49, 221, 0.5);
     outline: none;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.0125), 0 0 8px rgba(34,139,230,0.5);
-    transition: all .1s ease-in-out;
-  };
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.0125),
+      0 0 8px rgba(34, 139, 230, 0.5);
+    transition: all 0.1s ease-in-out;
+  }
 `;
 
 export const InputChecked = styled(InputForm)`
   width: inherit;
   height: inherit;
+`;
+
+export const LinkStyled = styled(Link)`
+  text-decoration: underline blue;
+  color: gray;
+  &:hover {
+    color: #0f31dd;
+  }
 `;

@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../store/AuthContext';
 import axios from 'axios';
 
-export  function SignIn() {
+export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -16,17 +16,18 @@ export  function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data: { token }} = await axios({
+      const {
+        data: { token },
+      } = await axios({
         method: 'POST',
         baseURL: process.env.REACT_APP_SERVER_URL,
         url: '/users/sign-in',
-        data: { email, password }
+        data: { email, password },
       });
       localStorage.setItem('token', token);
       isAuth(token);
       history.push('/profile');
-    }
-    catch (err) {
+    } catch (err) {
       localStorage.removeItem('token');
       setErrors({ account: 'User invalid or password invalid' });
     }
@@ -34,14 +35,15 @@ export  function SignIn() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    switch(name) {
+    switch (name) {
       case 'email':
         setEmail(value);
         break;
       case 'password':
         setPassword(value);
         break;
-      default: break;
+      default:
+        break;
     }
   };
 

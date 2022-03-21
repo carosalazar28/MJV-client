@@ -3,6 +3,7 @@ import {
   InputForm,
   ButtonSend,
   Errors,
+  LinkStyled,
 } from './styled/FormStyles';
 import { Link } from 'react-router-dom';
 
@@ -49,6 +50,10 @@ export function FormSignIn({
         <Link to="/sign-up" className="Link__signup">
           Create Account
         </Link>
+        <hr />
+        <LinkStyled to="/password-recovery" className="Link_recovery-password">
+          ¿Olvidaste tu contraseña?
+        </LinkStyled>
       </FormContainer>
     </>
   );
